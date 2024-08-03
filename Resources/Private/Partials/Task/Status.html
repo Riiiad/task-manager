@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:th="http://typo3.org/ns/RZT/Taskhub/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{task.isDone}">
+    <span class="badge badge-success">
+        <f:translate key="task.status.done">Done</f:translate>
+    </span>
+</f:if>
+<f:if condition="{task.isDone} == 0">
+    <f:if condition="{th:comparison(value: task.dueDate, comparison: 'lessThan', compareTo: 'now')}">
+        <span class="badge badge-danger">
+            <f:translate key="task.status.overdue">Overdue</f:translate>
+        </span>
+    </f:if>
+    <f:if condition="{th:comparison(value: task.dueDate, comparison: 'greaterThanOrEqual', compareTo: 'now')}">
+        <span class="badge badge-warning">
+            <f:translate key="task.status.pending">Pending</f:translate>
+        </span>
+    </f:if>
+</f:if>
+</html>

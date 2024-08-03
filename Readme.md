@@ -1,4 +1,4 @@
-## Task Manager
+## Taskhub
 
 TYPO3 12 LTS Extension for managing tasks.
 

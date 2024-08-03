@@ -3,7 +3,7 @@
 return [
     'BE' => [
         'debug' => true,
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$OWcwY2tISDNrQ0lZeFBIbA$O5spw1SMHLrz/2bG1cvh982Mwclc5FYK7azvrF5V78k',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$eEZLb1djdm94SlloT2NMRg$Uc5cy7Yvt0lH/hAM2rAZoC3/sClERnjqtvfX5Eg/xZM',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -140,7 +140,7 @@ return [
             'security.backend.enforceContentSecurityPolicy' => true,
             'security.usePasswordPolicyForFrontendUsers' => true,
         ],
-        'sitename' => 'Task Manager',
+        'sitename' => 'Taskhub',
         'systemMaintainers' => [
             1,
         ],

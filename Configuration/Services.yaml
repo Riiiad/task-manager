@@ -4,7 +4,7 @@ services:
     autoconfigure: true
     public: false
 
-  RZT\TaskManager\:
+  RZT\Taskhub\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
 

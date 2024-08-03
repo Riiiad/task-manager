@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1>Task Details</h1>
+
+    <f:flashMessages />
+
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <td>{task.title}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{task.description}</td>
+        </tr>
+        <tr>
+            <th>Due Date</th>
+            <td><f:format.date format="d.m.Y">{task.dueDate}</f:format.date></td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td><f:render partial="Status" arguments="{task: task}" /></td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>{task.category.title}</td>
+        </tr>
+    </table>
+
+    <f:link.action action="list" class="btn btn-default">Back to list</f:link.action>
+    <f:link.action action="edit" arguments="{task : task}" class="btn btn-warning">Edit</f:link.action>
+    <f:link.action action="delete" arguments="{task : task}" class="btn btn-danger">Delete</f:link.action>
+</f:section>
+</html>
