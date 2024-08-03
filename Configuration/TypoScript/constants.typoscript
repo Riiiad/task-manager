@@ -1,0 +1,14 @@
+plugin.tx_taskhub {
+    view {
+        # cat=plugin.tx_taskhub/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:taskhub/Resources/Private/Templates/Task/
+        # cat=plugin.tx_taskhub/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:taskhub/Resources/Private/Partials/Task/
+        # cat=plugin.tx_taskhub/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:taskhub/Resources/Private/Layouts/Task/
+    }
+    persistence {
+        # cat=plugin.tx_taskhub//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

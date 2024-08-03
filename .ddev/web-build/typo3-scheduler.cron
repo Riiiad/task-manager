@@ -1,0 +1,1 @@
+* * * * * IS_DDEV_PROJECT=true /var/www/html/vendor/bin/typo3 scheduler:run -vv
