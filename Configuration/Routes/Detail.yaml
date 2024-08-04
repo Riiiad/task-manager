@@ -1,0 +1,34 @@
+routeEnhancers:
+  TaskPlugin:
+    type: Extbase
+    extension: Taskhub
+    plugin: TaskList
+    routes:
+      - routePath: '/tasks'
+        _controller: 'Task::list'
+      - routePath: '/tasks/{task}'
+        _controller: 'Task::show'
+        _arguments:
+          task: task
+      - routePath: '/tasks/new'
+        _controller: 'Task::new'
+        _arguments:
+          task: task
+      - routePath: '/tasks/{task}/edit/'
+        _controller: 'Task::edit'
+        _arguments:
+          task: task
+      - routePath: '/tasks/{task}/deleted/'
+        _controller: 'Task::delete'
+        _arguments:
+          task: task
+      - routePath: '/tasks/{task}/changeStatus/'
+        _controller: 'Task::changeStatus'
+        _arguments:
+          task: task
+    defaultController: 'Task::list'
+    aspects:
+      task:
+        type: PersistedAliasMapper
+        tableName: tx_taskhub_domain_model_task
+        routeFieldName: slug

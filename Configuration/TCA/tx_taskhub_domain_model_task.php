@@ -21,7 +21,7 @@ return [
         'iconfile' => 'EXT:taskhub/Resources/Public/Icons/tx_taskhub_domain_model_task.svg',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, due_date, is_done, reminder_date, category, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, due_date, is_done, reminder_date, categories, slug'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -170,6 +170,25 @@ return [
             'config' => [
                 'type' => 'category',
             ],
+        ],
+        'slug' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:taskhub/Resources/Private/Language/locallang_db.xlf:slug',
+            'description' => 'LLL:EXT:taskhub/Resources/Private/Language/locallang_db.xlf:slug.description',
+            'config' => [
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => ['title', 'uid'],
+                    'fieldSeparator' => '-',
+                    'replacements' => [
+                        '/' => '',
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInPid',
+            ],
+
         ],
     ],
 ];
