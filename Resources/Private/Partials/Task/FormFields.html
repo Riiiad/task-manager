@@ -23,10 +23,20 @@
     </label>
     <f:form.textfield property="reminderDate" type="date" class="form-control" />
 </div>
+
+<div class="form-group">
+	<label for="categories">
+			<f:translate key="tx_taskhub_domain_model_task.categories" />
+	</label>
+	<f:form.select property="categories.0" options="{categories}" optionValueField="uid" optionLabelField="title" class="form-control" />
+</div>
+
 <div class="form-group">
     <label for="isDone">
         <f:translate key="tx_taskhub_domain_model_task.is_done" />
     </label>
     <f:form.checkbox property="isDone" value="1" />
 </div>
+
+
 </html>

@@ -166,5 +166,10 @@ return [
                 'default' => null,
             ],
         ],
+        'categories' => [
+            'config' => [
+                'type' => 'category',
+            ],
+        ],
     ],
 ];

@@ -3,7 +3,6 @@
 
 <f:section name="content">
     <h1>Task Details</h1>
-
     <f:flashMessages />
 
     <table class="table">
@@ -25,7 +24,9 @@
         </tr>
         <tr>
             <th>Category</th>
-            <td>{task.category.title}</td>
+						<f:for each="{task.categories}" as="category" iteration="i">
+							<td>{category.title}</td>
+						</f:for>
         </tr>
     </table>
 

@@ -9,7 +9,7 @@
     <f:render partial="FormErrors" />
 
     <f:form action="update" name="task" object="{task}" method="post">
-        <f:render partial="Task/FormFields" arguments="{task:task}" />
+        <f:render partial="FormFields" arguments="{task:task}" />
         <f:form.submit value="Update" class="btn btn-primary" />
     </f:form>
 

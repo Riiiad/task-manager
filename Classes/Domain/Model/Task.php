@@ -4,6 +4,7 @@ namespace RZT\Taskhub\Domain\Model;
 
 use DateTime;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Task extends AbstractEntity
 {
@@ -12,6 +13,16 @@ class Task extends AbstractEntity
     protected ?\DateTime $dueDate = null;
     protected bool $isDone = false;
     protected ?\DateTime $reminderDate = null;
+
+    /**
+     * @var ?ObjectStorage<Category>
+     */
+    protected ?ObjectStorage $categories = null;
+
+    public function __construct()
+    {
+        $this->categories = new ObjectStorage();
+    }
 
     public function getTitle(): string
     {
@@ -66,5 +77,37 @@ class Task extends AbstractEntity
     {
         $this->reminderDate = $reminderDate;
         return $this;
+    }
+
+     /**
+     * Add category to a post
+     */
+    public function addCategory(Category $category): void
+    {
+        $this->categories->attach($category);
+    }
+
+    /**
+     * @param ObjectStorage<Category> $categories
+     */
+    public function setCategories(ObjectStorage $categories): void
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * @return ?ObjectStorage<Category>
+     */
+    public function getCategories(): ?ObjectStorage
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Remove category from post
+     */
+    public function removeCategory(Category $category): void
+    {
+        $this->categories->detach($category);
     }
 }

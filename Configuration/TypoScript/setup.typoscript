@@ -11,6 +11,9 @@ plugin.tx_taskhub {
         storagePid = {$plugin.tx_taskhub.persistence.storagePid}
         #recursive = 1
     }
+    settings {
+        detailPid = {$plugin.tx_taskhub.detailPid}
+    }
     features {
         #skipDefaultArguments = 1
         # if set to 1, the enable fields are ignored in BE context
