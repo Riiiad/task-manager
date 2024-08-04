@@ -32,9 +32,30 @@ class TaskController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function newAction(): ResponseInterface
+    public function newAction(Task $task = null): ResponseInterface
     {
         return $this->htmlResponse();
+    }
+    public function initializeCreateAction(): void
+    {
+        if ($this->request->hasArgument('task')) {
+            $jobArgumentConfiguration = $this->arguments->getArgument('task')->getPropertyMappingConfiguration();
+
+            $propertiesToCpnvert = [
+                'dueDate',
+                'reminderDate',
+            ];
+
+            foreach ($propertiesToCpnvert as $propertyToConvert) {
+                $jobArgumentConfiguration->forProperty($propertyToConvert)
+                    ->setTypeConverterOptions(
+                        DateTimeConverter::class,
+                        [
+                            DateTimeConverter::CONFIGURATION_DATE_FORMAT => IsoDateTime::FORMAT,
+                        ]
+                    );
+            }
+        }
     }
 
     public function createAction(Task $task): ResponseInterface
