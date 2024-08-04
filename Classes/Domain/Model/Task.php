@@ -35,9 +35,6 @@ class Task extends AbstractEntity
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function getDueDate(): ?DateTime
     {
         return $this->dueDate;

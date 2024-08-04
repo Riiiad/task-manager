@@ -33,8 +33,17 @@
 		"typo3/cms-setup": "^12.4",
 		"typo3/cms-tstemplate": "^12.4",
 		"typo3/minimal": "^12.4",
-        "helhum/typo3-console": "^8.0",
-        "bk2k/bootstrap-package": "^14.0"
+        "helhum/typo3-console": "^8.0.2",
+        "bk2k/bootstrap-package": "^14.0",
+		"friendsofphp/php-cs-fixer": "^3.41",
+		"helmich/phpunit-json-assert": "^3.5.1",
+		"helmich/typo3-typoscript-lint": "^3.1.0",
+		"nikic/php-parser": "^4.15.1",
+		"php-mock/php-mock-phpunit": "^2.6",
+		"phpstan/phpstan": "^1.10",
+		"phpunit/phpunit": "^10.1",
+		"saschaegerer/phpstan-typo3": "^1.9",
+		"typo3/testing-framework": "^7.0"
     },
 	"autoload": {
         "psr-4": {
@@ -56,5 +65,23 @@
 			"web-dir": ".Build/Web",
             "extension-key": "taskhub"
         }
-    }
+    },
+	"scripts": {
+		"cs": ".Build/bin/php-cs-fixer",
+		"tl": ".Build/bin/typoscript-lint",
+		"phpstan": ".Build/bin/phpstan",
+		"phpunit": ".Build/bin/phpunit",
+		"cs:check": "@cs fix --config Build/php-cs-fixer/php-cs-rules.php --ansi --diff --verbose --dry-run",
+		"cs:fix": "@cs fix --config Build/php-cs-fixer/php-cs-rules.php --ansi",
+		"analyze:php": "@phpstan analyse --ansi --no-progress --memory-limit=768M --configuration=Build/phpstan/phpstan.neon",
+		"analyze:baseline": "@phpstan analyse --ansi --no-progress --memory-limit=768M --configuration=Build/phpstan/phpstan.neon --generate-baseline=Build/phpstan/phpstan-baseline.neon",
+		"lint:typoscript": "@tl --ansi --config=./Build/typoscript-lint/typoscript-lint.yml",
+		"lint:php": "find .*.php *.php Classes Configuration Tests -name '*.php' -print0 | xargs -r -0 -n 1 -P 4 php -l",
+		"test:php": [
+			"@test:php:unit",
+			"@test:php:functional"
+		],
+		"test:php:unit": "@phpunit --colors=always --configuration Build/phpunit/UnitTests.xml",
+		"test:php:functional": "@test:php:unit --configuration Build/phpunit/FunctionalTests.xml"
+	}
 }

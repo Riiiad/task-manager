@@ -10,7 +10,7 @@ class ComparisonViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('value', 'mixed', 'The value to compare', true);
         $this->registerArgument('comparison', 'string', 'The comparison operator', true);
