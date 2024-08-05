@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace RZT\Taskhub\Controller;
 
 use Psr\Http\Message\ResponseInterface;
@@ -18,8 +20,8 @@ class TaskController extends ActionController
 {
     protected TaskRepository $taskRepository;
     protected CategoryRepository $categoryRepository;
-
     protected PersistenceManagerInterface $persistenceManager;
+
     public function __construct(
         TaskRepository $taskRepository,
         CategoryRepository $categoryRepository,
@@ -57,6 +59,7 @@ class TaskController extends ActionController
         $this->view->assign('categories', $categories);
         return $this->htmlResponse();
     }
+
     public function initializeCreateAction(): void
     {
         $this->dateTimeConvert();
