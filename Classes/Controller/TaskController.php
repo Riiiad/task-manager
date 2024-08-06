@@ -80,7 +80,7 @@ class TaskController extends ActionController
         $afterSaveTaskEvent = new AfterCreateTaskEvent($task);
         $this->eventDispatcher->dispatch($afterSaveTaskEvent);
 
-        return $this->redirect('list');
+        return $this->redirect('list', null, null, ['task' => $task]);
     }
 
     public function editAction(Task $task): ResponseInterface
@@ -100,7 +100,7 @@ class TaskController extends ActionController
         $afterSaveTaskEvent = new AfterCreateTaskEvent($task);
         $this->eventDispatcher->dispatch($afterSaveTaskEvent);
 
-        return $this->redirect('list');
+        return $this->redirect('list', null, null, ['task' => $task]);
     }
 
     public function deleteAction(Task $task): ResponseInterface
@@ -109,7 +109,7 @@ class TaskController extends ActionController
 
         $this->translatedFlashMessage('task.deleted');
 
-        return $this->redirect('list');
+        return $this->redirect('list', null, null, ['task' => $task]);
     }
 
     public function markAsDoneAction(Task $task): ResponseInterface
@@ -117,8 +117,7 @@ class TaskController extends ActionController
         $task->setIsDone(true);
         $this->taskRepository->update($task);
 
-        $this->translatedFlashMessage('task.done');
-        return $this->redirect('list');
+        return $this->redirect('list', null, null, ['task' => $task]);
     }
 
     public function translatedFlashMessage(string $messageLL, ?string $titleLL = null): void

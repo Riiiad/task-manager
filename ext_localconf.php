@@ -10,15 +10,15 @@ call_user_func(
         ExtensionUtility::configurePlugin(
             'Taskhub',
             'TaskList',
-            [TaskController::class => 'list, show'],
-            [TaskController::class => '']
+            [TaskController::class => 'list, show, new, edit, create, update, delete, changeStatus'],
+            [TaskController::class => 'list, show, new, edit, create, update, delete, changeStatus']
         );
 
         ExtensionUtility::configurePlugin(
             'Taskhub',
             'TaskNew',
-            [TaskController::class => 'new, create, edit, update, delete, markAsDone'],
-            [TaskController::class => 'create, update, delete, markAsDone']
+            [TaskController::class => 'new, edit, create, update, delete, changeStatus, list, show'],
+            [TaskController::class => 'new, edit, create, update, delete, changeStatus, list, show']
         );
 
     }
