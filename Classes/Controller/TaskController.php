@@ -53,7 +53,7 @@ class TaskController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function newAction(Task $task = null): ResponseInterface
+    public function newAction(): ResponseInterface
     {
         $categories = $this->categoryRepository->findAll();
         $this->view->assign('categories', $categories);
@@ -80,7 +80,7 @@ class TaskController extends ActionController
         $afterSaveTaskEvent = new AfterCreateTaskEvent($task);
         $this->eventDispatcher->dispatch($afterSaveTaskEvent);
 
-        return $this->redirect('list', null, null, ['task' => $task]);
+        return $this->redirect('list');
     }
 
     public function editAction(Task $task): ResponseInterface
@@ -100,7 +100,7 @@ class TaskController extends ActionController
         $afterSaveTaskEvent = new AfterCreateTaskEvent($task);
         $this->eventDispatcher->dispatch($afterSaveTaskEvent);
 
-        return $this->redirect('list', null, null, ['task' => $task]);
+        return $this->redirect('list');
     }
 
     public function deleteAction(Task $task): ResponseInterface
@@ -109,21 +109,16 @@ class TaskController extends ActionController
 
         $this->translatedFlashMessage('task.deleted');
 
-        return $this->redirect('list', null, null, ['task' => $task]);
+        return $this->redirect('list');
     }
 
-    public function changeStatusAction(Task $task): ResponseInterface
+    public function markAsDoneAction(Task $task): ResponseInterface
     {
-        if ($task->getIsDone()) {
-            $task->setIsDone(false);
-            $this->translatedFlashMessage('task.undone');
-        } else {
-            $task->setIsDone(true);
-            $this->translatedFlashMessage('task.done');
-        }
+        $task->setIsDone(true);
         $this->taskRepository->update($task);
 
-        return $this->redirect('list', null, null, ['task' => $task]);
+        $this->translatedFlashMessage('task.done');
+        return $this->redirect('list');
     }
 
     public function translatedFlashMessage(string $messageLL, ?string $titleLL = null): void

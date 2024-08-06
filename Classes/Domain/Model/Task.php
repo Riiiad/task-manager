@@ -64,10 +64,9 @@ class Task extends AbstractEntity
         return $this->isDone;
     }
 
-    public function setIsDone(bool $isDone): self
+    public function setIsDone(bool $isDone): void
     {
         $this->isDone = $isDone;
-        return $this;
     }
 
     public function getReminderDate(): ?DateTime
@@ -75,15 +74,10 @@ class Task extends AbstractEntity
         return $this->reminderDate;
     }
 
-    public function setReminderDate(?DateTime $reminderDate): self
+    public function setReminderDate(?DateTime $reminderDate): void
     {
         $this->reminderDate = $reminderDate;
-        return $this;
     }
-
-     /**
-     * Add category to a post
-     */
     public function addCategory(Category $category): void
     {
         $this->categories->attach($category);
@@ -105,9 +99,6 @@ class Task extends AbstractEntity
         return $this->categories;
     }
 
-    /**
-     * Remove category from post
-     */
     public function removeCategory(Category $category): void
     {
         $this->categories->detach($category);
