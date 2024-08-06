@@ -1,14 +1,8 @@
 routeEnhancers:
-  TaskListPlugin:
+  TaskNewPlugin:
     type: Extbase
-    namespace: tx_taskhub_tasklist
+    namespace: tx_taskhub_tasknew
     routes:
-      - routePath: '/tasks'
-        _controller: 'Task::list'
-      - routePath: '/tasks/{task}'
-        _controller: 'Task::show'
-        _arguments:
-          task: task
       - routePath: '/tasks/new'
         _controller: 'Task::new'
         _arguments:
@@ -21,11 +15,6 @@ routeEnhancers:
         _controller: 'Task::delete'
         _arguments:
           task: task
-      - routePath: '/tasks/{task}/changeStatus/'
-        _controller: 'Task::changeStatus'
-        _arguments:
-          task: task
-    defaultController: 'Task::list'
     aspects:
       task:
         type: PersistedAliasMapper
