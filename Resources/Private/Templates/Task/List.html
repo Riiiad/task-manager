@@ -2,41 +2,111 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <h1>Task List</h1>
+	<div class="container mt-4">
 
-    <f:flashMessages />
-    <f:link.action action="new" class="btn btn-primary">Create new task</f:link.action>
+		<div class="card mb-4">
+			<div class="card-body">
+				<f:form action="list" class="form-inline">
+					<div class="form-group mr-2">
+						<label for="category" class="mr-2">
+							<f:translate key="list.filter.category">Filter by Category:</f:translate>
+						</label>
+						<f:form.select name="category" options="{categories}" optionLabelField="title" optionValueField="uid"
+							optionsAfterContent="true" value="{selectedCategory}" class="form-control">
+							<f:form.select.option value="0">
+								<f:translate key="list.filter.allCategories">Show all</f:translate>
+							</f:form.select.option>
+						</f:form.select>
+					</div>
+					<f:form.submit value="{f:translate(key: 'list.filter.submit')}" class="btn btn--primary" />
+				</f:form>
+			</div>
+		</div>
 
-    <f:if condition="{tasks}">
-        <f:then>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Due Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <f:for each="{tasks}" as="task">
-                        <tr>
-                            <td>{task.title}</td>
-                            <td><f:format.date format="d.m.Y">{task.dueDate}</f:format.date></td>
-                            <td><f:render partial="Status" arguments="{task: task}" /></td>
-                            <td>
-                                <f:link.action action="show" arguments="{task : task}" class="btn btn-info">Show</f:link.action>
-                                <f:link.action action="edit" arguments="{task : task}" class="btn btn-warning">Edit</f:link.action>
-                                <f:link.action action="delete" arguments="{task : task}" class="btn btn-danger">Delete</f:link.action>
-                            </td>
-                        </tr>
-                    </f:for>
-                </tbody>
-            </table>
-        </f:then>
-        <f:else>
-            <div class="alert alert-info">No tasks found.</div>
-        </f:else>
-    </f:if>
+		<f:flashMessages />
+
+		<f:if condition="{tasks}">
+			<f:then>
+				<div class="row">
+					<f:for each="{tasks}" as="task">
+						<div class="col-md-6 col-lg-4 mb-4">
+							<div class="card h-100">
+								<div class="card-body">
+									<div class="row">
+										<div class="col">
+											<h5 class="card-title">{task.title}</h5>
+										</div>
+										<div class="col text-right">
+											<f:render partial="StatusAction" arguments="{task: task}" />
+										</div>
+									</div>
+									<f:if condition="{task.dueDate}">
+										<p class="card-text">
+											<strong>
+												<f:translate key="list.task.dueDate">Due Date:</f:translate>
+											</strong>
+											<f:format.date format="d.m.Y">{task.dueDate}</f:format.date>
+										</p>
+									</f:if>
+									<f:if condition="{task.categories}">
+										<p class="card-text">
+											<strong>
+												<f:translate key="list.task.categories">Categories:</f:translate>
+											</strong>
+											<f:for each="{task.categories}" as="category" iteration="iterator">
+												{category.title}<f:if condition="{iterator.isLast}">
+													<f:else>, </f:else>
+												</f:if>
+											</f:for>
+										</p>
+									</f:if>
+
+									<p class="card-text">
+										<strong>
+											<f:translate key="list.task.status">Status:</f:translate>
+										</strong>
+										<span class="badge"
+											style="background-color: {f:if(condition: task.isDone, then: '#95c11e', else: '#dc3545')};">
+											<f:if condition="{task.isDone}">
+												<f:then>
+													<f:translate key="list.task.status.done">Done</f:translate>
+												</f:then>
+												<f:else>
+													<f:translate key="list.task.status.pending">Pending</f:translate>
+												</f:else>
+											</f:if>
+										</span>
+									</p>
+								</div>
+
+								<div class="card-footer">
+									<f:link.action action="show" arguments="{task: task}" class="btn btn-sm btn-outline-secondary mr-1">
+										<f:translate key="list.action.show">Show</f:translate>
+									</f:link.action>
+									<f:link.action action="edit" arguments="{task: task}" class="btn btn-sm btn-outline-secondary mr-1">
+										<f:translate key="list.action.edit">Edit</f:translate>
+									</f:link.action>
+									<f:link.action action="delete" arguments="{task: task}" class="btn btn-sm btn-outline-danger">
+										<f:translate key="list.action.delete">Delete</f:translate>
+									</f:link.action>
+								</div>
+							</div>
+						</div>
+					</f:for>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="alert alert-info" role="alert">
+					<f:translate key="list.noTasks">No tasks found.</f:translate>
+				</div>
+			</f:else>
+		</f:if>
+
+		<div class="col mb-3">
+			<f:link.action action="new" class="btn btn--primary mt-3 text-right">
+				<f:translate key="list.action.newTask">Create new task</f:translate>
+			</f:link.action>
+		</div>
+	</div>
 </f:section>
 </html>

@@ -3,39 +3,41 @@
     <label for="title">
         <f:translate key="tx_taskhub_domain_model_task.title" />
     </label>
-    <f:form.textfield property="title" class="form-control" />
+    <f:form.textfield id="title" property="title" class="form-control" />
 </div>
 <div class="form-group">
     <label for="description">
         <f:translate key="tx_taskhub_domain_model_task.description" />
     </label>
-    <f:form.textarea property="description" class="form-control" />
+    <f:form.textarea id="description" property="description" class="form-control" />
 </div>
+
 <div class="form-group">
     <label for="dueDate">
         <f:translate key="tx_taskhub_domain_model_task.due_date" />
     </label>
-    <f:form.textfield property="dueDate" type="date" class="form-control" />
+    <f:form.textfield id="dueDate" property="dueDate" type="date" class="form-control" value="{task.dueDate -> f:format.date()}"/>
 </div>
+
 <div class="form-group">
     <label for="reminderDate">
         <f:translate key="tx_taskhub_domain_model_task.reminder_date" />
     </label>
-    <f:form.textfield property="reminderDate" type="date" class="form-control" />
+    <f:form.textfield id="reminderDate" property="reminderDate" type="date" class="form-control"  value="{task.dueDate -> f:format.date()}"/>
 </div>
 
 <div class="form-group">
 	<label for="categories">
 			<f:translate key="tx_taskhub_domain_model_task.categories" />
 	</label>
-	<f:form.select property="categories.0" options="{categories}" optionValueField="uid" optionLabelField="title" class="form-control" />
+	<f:form.select id="categories" property="categories.0" options="{categories}" optionValueField="uid" optionLabelField="title" value="{task.categories.uid}" class="form-control" />
 </div>
 
 <div class="form-group">
     <label for="isDone">
         <f:translate key="tx_taskhub_domain_model_task.is_done" />
     </label>
-    <f:form.checkbox property="isDone" value="1" />
+    <f:form.checkbox id="isDone" property="isDone" value="1" />
 </div>
 
 

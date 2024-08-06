@@ -2,17 +2,19 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <h1>Edit Task</h1>
 
-    <f:flashMessages />
+	<f:render partial="Header" arguments="{header: 'edit.header'}" />
+	<f:flashMessages />
+	<div class="card">
+		<div class="card-body">
+			<f:render partial="FormErrors" />
+			<f:form action="update" name="task" object="{task}">
+				<f:render partial="FormFields" arguments="{task: task, categories: categories}" />
+				<f:form.submit value="Update" class="btn btn--primary" />
+			</f:form>
+		</div>
+	</div>
 
-    <f:render partial="FormErrors" />
-
-    <f:form action="update" name="task" object="{task}" method="post">
-        <f:render partial="FormFields" arguments="{task:task}" />
-        <f:form.submit value="Update" class="btn btn-primary" />
-    </f:form>
-
-    <f:link.action action="list" class="btn btn-default">Back to list</f:link.action>
 </f:section>
+
 </html>

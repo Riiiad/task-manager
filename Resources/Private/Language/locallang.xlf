@@ -33,6 +33,66 @@
             <trans-unit id="tx_taskhub.fe.alert.task.created">
                 <source>Task was Created.</source>
             </trans-unit>
+            <trans-unit id="tx_taskhub.fe.alert.task.update">
+                <source>Task was Update.</source>
+            </trans-unit>
+            <trans-unit id="tx_taskhub.fe.alert.task.deleted">
+                <source>Task was Deleted.</source>
+            </trans-unit>
+            <trans-unit id="tx_taskhub.fe.alert.task.done">
+                <source>Task marked as Done.</source>
+            </trans-unit>
+            <trans-unit id="tx_taskhub.fe.alert.task.undone">
+                <source>Task marked as Undone.</source>
+            </trans-unit>
+
+            <!-- New view labels -->
+            <trans-unit id="new.header">
+                <source>Create New Task</source>
+            </trans-unit>
+            <trans-unit id="new.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="new.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="new.dueDate">
+                <source>Due Date</source>
+            </trans-unit>
+            <trans-unit id="new.categories">
+                <source>Categories</source>
+            </trans-unit>
+            <trans-unit id="new.reminderDate">
+                <source>Reminder Date</source>
+            </trans-unit>
+            <trans-unit id="new.isDone">
+                <source>Is Done</source>
+            </trans-unit>
+            <trans-unit id="new.submit">
+                <source>Create Task</source>
+            </trans-unit>
+            <trans-unit id="backToList">
+                <source>Back to List</source>
+            </trans-unit>
+
+            <trans-unit id="edit.header">
+                <source>Edit Task</source>
+            </trans-unit>
+            <trans-unit id="show.header">
+                <source>Task Overview</source>
+            </trans-unit>
+            <trans-unit id="action.mark.done">
+                <source>Mark as Done</source>
+            </trans-unit>
+            <trans-unit id="action.mark.undone">
+                <source>Mark as Undone</source>
+            </trans-unit>
+            <trans-unit id="list.filter.submit">
+                <source>Filter</source>
+            </trans-unit>
+            <trans-unit id="list.filter.allCategories">
+                <source>Show all</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
