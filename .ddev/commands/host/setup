@@ -11,3 +11,7 @@ ddev composer install
 echo "DROP DATABASE db; CREATE DATABASE db;" | ddev mysql
 ddev import-db --file="./Build/db.sql.gz"
 ddev typo3 install:setup --skip-integrity-check
+cp .Build/public/typo3/sysext/install/Resources/Private/FolderStructureTemplateFiles/root-htaccess .Build/public
+mv .Build/public/root-htaccess .Build/public/.htaccess
+ddev typo3 cache:flush
+ddev launch
