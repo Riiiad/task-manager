@@ -1,0 +1,16 @@
+<f:if condition="{task.isDone}">
+	<f:then>
+		<div class="col text-right">
+			<f:link.action action="changeStatus" arguments="{task: task}" class="btn" style="background-color: #95c11e">
+				<f:translate key="action.mark.undone">Move to Undone</f:translate>
+			</f:link.action>
+		</div>
+	</f:then>
+	<f:else>
+		<div class="col text-right">
+			<f:link.action action="changeStatus" arguments="{task: task}" class="btn" style="background-color: #95c11e;">
+				<f:translate key="action.mark.done">Move as Done</f:translate>
+		</f:link.action>
+		</div>
+	</f:else>
+</f:if>

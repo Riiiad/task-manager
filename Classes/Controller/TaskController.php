@@ -112,9 +112,15 @@ class TaskController extends ActionController
         return $this->redirect('list', null, null, ['task' => $task]);
     }
 
-    public function markAsDoneAction(Task $task): ResponseInterface
+    public function changeStatusAction(Task $task): ResponseInterface
     {
-        $task->setIsDone(true);
+        if ($task->getIsDone()) {
+            $task->setIsDone(false);
+            $this->translatedFlashMessage('task.undone');
+        } else {
+            $task->setIsDone(true);
+            $this->translatedFlashMessage('task.done');
+        }
         $this->taskRepository->update($task);
 
         return $this->redirect('list', null, null, ['task' => $task]);
