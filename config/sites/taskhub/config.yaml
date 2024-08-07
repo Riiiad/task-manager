@@ -1,3 +1,6 @@
+imports:
+  - {resource: 'EXT:taskhub/Configuration/Routes/Detail.yaml' }
+
 base: 'https://taskhub.ddev.site/'
 languages:
   -
@@ -36,23 +39,7 @@ routes:
     route: sitemap.xml
     type: uri
     source: 't3://page?uid=9&type=1533906435'
-routeEnhancers:
-  TaskPlugin:
-    type: Extbase
-    extension: Taskhub
-    plugin: TaskList
-    routes:
-      - routePath: '/tasks'
-        _controller: 'Task::list'
-      - routePath: '/tasks/{task}'
-        _controller: 'Task::show'
-        _arguments:
-          task: task
-    defaultController: 'Task::list'
-    aspects:
-      task:
-        type: PersistedAliasMapper
-        tableName: tx_taskhub_domain_model_task
-        routeFieldName: slug
+
+
 rootPageId: 1
 websiteTitle: 'Taskhub'
