@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use RZT\Taskhub\DateTime\IsoDateTime;
 use RZT\Taskhub\Domain\Model\Task;
 use RZT\Taskhub\Domain\Repository\CategoryRepository;
+use RZT\Taskhub\Domain\Repository\FrontendUserRepository;
 use RZT\Taskhub\Domain\Repository\TaskRepository;
 use RZT\Taskhub\Event\AfterCreateTaskEvent;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -21,15 +22,18 @@ class TaskController extends ActionController
     protected TaskRepository $taskRepository;
     protected CategoryRepository $categoryRepository;
     protected PersistenceManagerInterface $persistenceManager;
+    protected FrontendUserRepository $frontendUserRepository;
 
     public function __construct(
         TaskRepository $taskRepository,
         CategoryRepository $categoryRepository,
         PersistenceManagerInterface $persistenceManager,
+        FrontendUserRepository $frontendUserRepository
     ) {
         $this->taskRepository = $taskRepository;
         $this->categoryRepository = $categoryRepository;
         $this->persistenceManager = $persistenceManager;
+        $this->frontendUserRepository = $frontendUserRepository;
     }
 
     public function listAction(int $category = 0): ResponseInterface
@@ -55,8 +59,12 @@ class TaskController extends ActionController
 
     public function newAction(): ResponseInterface
     {
+        $users = $this->frontendUserRepository->findAll();
         $categories = $this->categoryRepository->findAll();
+
         $this->view->assign('categories', $categories);
+        $this->view->assign('users', $users);
+
         return $this->htmlResponse();
     }
 
@@ -85,9 +93,13 @@ class TaskController extends ActionController
 
     public function editAction(Task $task): ResponseInterface
     {
+        $users = $this->frontendUserRepository->findAll();
         $categories = $this->categoryRepository->findAll();
+
+        $this->view->assign('users', $users);
         $this->view->assign('categories', $categories);
         $this->view->assign('task', $task);
+
         return $this->htmlResponse();
     }
 

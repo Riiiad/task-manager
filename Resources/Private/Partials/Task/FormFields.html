@@ -28,10 +28,19 @@
 
 <div class="form-group">
 	<label for="categories">
-			<f:translate key="tx_taskhub_domain_model_task.categories" />
+			<f:translate key="tx_taskhub_domain_model_task.category" />
 	</label>
 	<f:form.select id="categories" property="categories.0" options="{categories}" optionValueField="uid" optionLabelField="title" value="{task.categories.uid}" class="form-control" />
 </div>
+
+<f:security.ifAuthenticated>
+	<div class="form-group">
+		<label for="users">
+				<f:translate key="tx_taskhub_domain_model_task.assigned_to" />
+		</label>
+		<f:form.select id="users" property="assignedTo" options="{users}" optionLabelField="username" prependOptionLabel="{f:translate(key: 'tx_taskhub_domain_model_task.select_user')}" prependOptionValue="" class="form-control" />
+	</div>
+</f:security.ifAuthenticated>
 
 <div class="form-group">
     <label for="isDone">

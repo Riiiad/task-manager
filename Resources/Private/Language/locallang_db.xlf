@@ -30,6 +30,9 @@
             <trans-unit id="tx_taskhub_domain_model_category.title">
                 <source>Title</source>
             </trans-unit>
+            <trans-unit id="tx_taskhub_domain_model_task.assigned_to">
+                <source>Assigned to</source>
+            </trans-unit>
             <trans-unit id="slug">
                 <source>Slug</source>
             </trans-unit>

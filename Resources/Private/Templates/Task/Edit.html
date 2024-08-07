@@ -9,7 +9,7 @@
 		<div class="card-body">
 			<f:render partial="FormErrors" />
 			<f:form action="update" name="task" object="{task}">
-				<f:render partial="FormFields" arguments="{task: task, categories: categories}" />
+				<f:render partial="FormFields" arguments="{task: task, categories: categories, users: users}" />
 				<f:form.submit value="Update" class="btn btn--primary" />
 			</f:form>
 		</div>

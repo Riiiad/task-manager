@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body">
                 <f:form action="create" name="task" object="{task}">
-										<f:render partial="FormFields" arguments="{task: task, categories: categories}" />
+										<f:render partial="FormFields" arguments="{task: task, categories: categories, users: users}" />
                     <f:form.submit value="{f:translate(key: 'new.submit')}" class="btn btn--primary" />
                 </f:form>
             </div>

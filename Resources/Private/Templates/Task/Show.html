@@ -10,6 +10,9 @@
 								<div class="row">
 									<div class="col">
 										<h2 class="card-title">{task.title}</h2>
+										<f:if condition="{task.assignedTo.username}">
+											<p class="mb-3"><strong>Assigned To:</strong> {task.assignedTo.username}</p>
+										</f:if>
 									</div>
 									<f:render partial="StatusAction" arguments="{task: task}" />
 								</div>

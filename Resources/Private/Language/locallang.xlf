@@ -27,6 +27,13 @@
             <trans-unit id="tx_taskhub_domain_model_category">
                 <source>Category</source>
             </trans-unit>
+            <trans-unit id="tx_taskhub_domain_model_task.assigned_to">
+                <source>Assigned to</source>
+            </trans-unit>
+            <trans-unit id="tx_taskhub_domain_model_task.select_user">
+                <source>Select User</source>
+            </trans-unit>
+
             <trans-unit id="tx_taskhub_domain_model_category.title">
                 <source>Title</source>
             </trans-unit>

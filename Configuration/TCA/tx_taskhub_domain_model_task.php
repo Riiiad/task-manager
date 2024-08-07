@@ -21,7 +21,7 @@ return [
         'iconfile' => 'EXT:taskhub/Resources/Public/Icons/tx_taskhub_domain_model_task.svg',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, due_date, is_done, reminder_date, categories, slug'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, due_date, is_done, reminder_date, categories, assigned_to, slug'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -138,7 +138,7 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'size' => 10,
-                'eval' => 'date',
+                'eval' => 'datetime,int',
                 'default' => null,
             ],
         ],
@@ -162,7 +162,7 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'size' => 10,
-                'eval' => 'date',
+                'eval' =>  'datetime,int',
                 'default' => null,
             ],
         ],
@@ -171,6 +171,35 @@ return [
                 'type' => 'category',
             ],
         ],
+        'assigned_to' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:taskhub/Resources/Private/Language/locallang_db.xlf:tx_taskhub_domain_model_task.assigned_to',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'foreign_table' => 'fe_users',
+                'foreign_table_where' => 'ORDER BY fe_users.username',
+                'items' => [
+                    ['--none--', 0],
+                ],
+                'default' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                        'options' => [
+                            'setValue' => 'prepend',
+                        ],
+                    ],
+                ],
+                'size' => 1,
+                'minitems' => 0,
+                'maxitems' => 1,
+            ],
+        ],
+
         'slug' => [
             'exclude' => true,
             'label' => 'LLL:EXT:taskhub/Resources/Private/Language/locallang_db.xlf:slug',

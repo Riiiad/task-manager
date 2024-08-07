@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RZT\Taskhub\Domain\Model;
 
 use DateTime;
+use RZT\Taskhub\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -20,6 +21,11 @@ class Task extends AbstractEntity
      * @var ?ObjectStorage<Category>
      */
     protected ?ObjectStorage $categories = null;
+
+    /**
+     * @var FrontendUser|null
+     */
+    protected ?FrontendUser $assignedTo = null;
 
     public function __construct()
     {
@@ -102,5 +108,26 @@ class Task extends AbstractEntity
     public function removeCategory(Category $category): void
     {
         $this->categories->detach($category);
+    }
+
+    /**
+     * Returns the assigned frontend user
+     *
+     * @return FrontendUser|null
+     */
+    public function getAssignedTo(): ?FrontendUser
+    {
+        return $this->assignedTo;
+    }
+
+    /**
+     * Sets the assigned frontend user
+     *
+     * @param FrontendUser|null $assignedTo
+     * @return void
+     */
+    public function setAssignedTo(?FrontendUser $assignedTo): void
+    {
+        $this->assignedTo = $assignedTo;
     }
 }
