@@ -39,10 +39,10 @@ These tasks can be related to bike leasing
 processes such as maintenance schedules, contract follow-ups, or insurance renewals.
 
 ## Acceptance Criteria
-- [ ] Task Management extension is installed and configured, accessible from the TYPO3 backend
-- [ ] Users can add a task with a title, description, and optional due date
-- [ ] Users can remove a task that is no longer needed
-- [ ] User can see all tasks when he is logged in
+- [ + ] Task Management extension is installed and configured, accessible from the TYPO3 backend
+- [ + ] Users can add a task with a title, description, and optional due date
+- [ + ]  Users can remove a task that is no longer needed
+- [ + ] User can see all tasks when he is logged in
 
 ---
 
@@ -50,12 +50,12 @@ processes such as maintenance schedules, contract follow-ups, or insurance renew
 Build additional features for the Task Management extension that allow users to assign tasks to other users and categorize tasks for better organization.
 
 ## Acceptance Criteria
-- [ ] Users can assign tasks to other users
-- [ ] Users can categorize tasks
+- [ + ] Users can assign tasks to other users
+- [ + ] Users can categorize tasks
 
 
 ---
-
+NOT Implemented
 ## Story 3: Task Management Extension (UI/UX Improvements)
 Release a new version of the Task Management extension with improved UI/UX for better usability.
 For better usability the create, deletet, mark as done and add reminder date should not reload the page. The will save
