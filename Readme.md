@@ -10,6 +10,23 @@ Start setup with the following commands:
     ddev setup
 ```
 
+BE Admin User:
+```
+    Username: admin
+    Password: password
+```
+
+Frontend User:
+```
+    Username: parker
+    Password: parker123
+```
+
+```
+    Username: banner
+    Password: banner123
+```
+
 This will give you a fresh setup of the project.
 
 Note: This will remove all data from the database.
